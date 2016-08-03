@@ -44,26 +44,17 @@
 
   
   <target name="dist" depends="jar" >
-		<tar destfile="${dist}/${time}_${ant.project.name}.tar" basedir="${dist}" includes="${config}/*.properties, ${lib}/*.jar">
-			</tarfileset>
-  				<tarfileset dir="${dist}"
-              			prefix="/"
-        			preserveLeadingSlashes="true">
-    				<include name="*.jar"/>
-			</tarfileset>
-			</tarfileset>
-  				<tarfileset dir="${lib}"
-              			prefix="/"
-        			preserveLeadingSlashes="true">
-    				<include name="*.jar"/>
-			</tarfileset>
-			</tarfileset>
-  				<tarfileset dir="${config}"
-              			prefix="/"
-        			preserveLeadingSlashes="true">
-    				<include name="*.*"/>
-			</tarfileset>
-		</tar>
+	<tar destfile="${dist}/${time}_${ant.project.name}.tar">
+  		<tarfileset dir="${dist}" prefix="/" preserveLeadingSlashes="true">
+    			<include name="*.jar"/>
+		</tarfileset>
+  		<tarfileset dir="${lib}" prefix="/" preserveLeadingSlashes="true">
+    			<include name="*.jar"/>
+		</tarfileset>
+  		<tarfileset dir="${config}" prefix="/" preserveLeadingSlashes="true">
+    			<include name="*.*"/>
+		</tarfileset>
+	</tar>
   </target>
 
   <target name="clean">
