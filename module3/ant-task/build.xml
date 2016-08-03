@@ -1,5 +1,5 @@
 <project name="TestProject" default="dist" basedir=".">
-
+<property file="config/project.properties"/>
   <path id="libs">
     <fileset dir="lib" includes="*.jar"/>
   </path>
