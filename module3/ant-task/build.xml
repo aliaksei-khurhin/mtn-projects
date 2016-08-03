@@ -38,15 +38,16 @@
     </junit>
   </target>
   
-  <target name="dist" depends="jar" >
-		<tar destfile="${dist}/${time}_${ant.project.name}.tar"
-			basedir="."
-			includes="${config}/*, ${dist}/*, ${lib}/**" />
+  <target name="jar" depends="test" >
+    <mkdir dir="${dist}"/>
+    <jar jarfile="${dist}/testProject.jar" basedir="${build}"/>
   </target>
 
-  <target name="jar" depends="test" >
-    <mkdir dir="${dist}/lib"/>
-    <jar jarfile="${dist}/lib/testProject.jar" basedir="${build}"/>
+  
+  <target name="dist" depends="jar" >
+		<tar destfile="${dist}/${time}_${ant.project.name}.tar"
+			basedir="${dist}"
+			includes="${config}/*.properties, ${lib}/*.jar" />
   </target>
 
   <target name="clean">
