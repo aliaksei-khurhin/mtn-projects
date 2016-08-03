@@ -28,7 +28,7 @@
          </classpath>
          <batchtest fork="yes" >
                  <fileset dir="${test}">
-                         <include name="UnitTest.java"/>
+                         <include name="**/*Test*.java"/>
                  </fileset>
          </batchtest>
     </junit>
