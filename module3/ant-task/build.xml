@@ -16,14 +16,15 @@
   </target>
 
   <target name="test" depends="compile" >
-    <javac srcdir="${test}" classpathref="libs" destdir="${build}" includeantruntime="false"/>
+    <mkdir dir="${test.dir}"/>
+    <javac srcdir="${test}" classpathref="libs" destdir="${test.dir}" includeantruntime="false"/>
 	<echo>Performing test</echo>
     <junit printsummary="yes" haltonfailure="no">
          <classpath path="${lib}" >
                  <path refid="libs" />
          </classpath>
          <batchtest fork="yes">
-                 <fileset dir="${build}">
+                 <fileset dir="${test.dir}">
                          <include name="**/*Test*.java"/>
                  </fileset>
          </batchtest>
@@ -53,5 +54,6 @@
   <target name="clean">
     <delete dir="${build}"/>
     <delete dir="${dist}"/>
+    <delete dir=${test.dir}/>
   </target>
 </project>
