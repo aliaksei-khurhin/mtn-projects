@@ -20,7 +20,17 @@
   </target>
 
   <target name="test" depends="compile" >
-    <javac srcdir="${test}" classpathref="libs" destdir="${build}" includeantruntime="false"/>
+    <javac srcdir="${test}" classpathref="libs" destdir="${test}" includeantruntime="false"/>
+    <junit printsummary="yes" haltonfailure="no">
+         <classpath path="${lib}">
+                 <path refid="libs" />
+         </classpath>
+         <batchtest fork="yes" >
+                 <fileset dir="${test}">
+                         <include name="Unit*.java"/>
+                 </fileset>
+         </batchtest>
+    </junit>
   </target>
 
   <target name="dist" depends="compile" >
