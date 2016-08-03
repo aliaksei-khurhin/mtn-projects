@@ -10,9 +10,11 @@
   <property name="config"  location="config"/>
   <property name="lib"  location="lib"/>
   <property name="test"  location="test"/>
+  <property name="report.dir"  location="reports"/>
 
   <target name="init">
     <mkdir dir="${build}"/>
+	<mkdir dir="${report.dir}"/>
   </target>
 
   <target name="compile" depends="init" >
@@ -22,11 +24,13 @@
   <target name="test" depends="compile" >
     <javac srcdir="${test}" classpathref="libs" destdir="${test}" includeantruntime="false"/>
 	<echo>Performing test</echo>
+	<classpath refid="test.path" />
+	<classpath location="${build}" />
     <junit printsummary="yes" haltonfailure="no">
-         <classpath path="${lib}">
+         <classpath path="${lib}" >
                  <path refid="libs" />
          </classpath>
-         <batchtest fork="yes" >
+         <batchtest fork="yes" todir="${report.dir}>
                  <fileset dir="${test}">
                          <include name="**/*Test*.java"/>
                  </fileset>
@@ -42,5 +46,6 @@
   <target name="clean">
     <delete dir="${build}"/>
     <delete dir="${dist}"/>
+	<delete dir="${report.dir}"/>
   </target>
 </project>
