@@ -4,7 +4,7 @@
     <fileset dir="lib" includes="*.jar"/>
   </path>
 
-  <target name="init">
+  <target name="init" depends="clean">
 	<tstamp>
 		<format property="time" pattern="dd-MM-yyyy_hh:mm"/>
 	</tstamp>
@@ -16,14 +16,14 @@
   </target>
 
   <target name="test" depends="compile" >
-    <javac srcdir="${test}" classpathref="libs" destdir="${test}" includeantruntime="false"/>
+    <javac srcdir="${test}" classpathref="libs" destdir="${build}" includeantruntime="false"/>
 	<echo>Performing test</echo>
     <junit printsummary="yes" haltonfailure="no">
          <classpath path="${lib}" >
                  <path refid="libs" />
          </classpath>
          <batchtest fork="yes">
-                 <fileset dir="${test}">
+                 <fileset dir="${build}">
                          <include name="**/*Test*.java"/>
                  </fileset>
          </batchtest>
