@@ -47,7 +47,7 @@
 			includes="${config.dir}/*, ${jar.dir}/*, ${lib.dir}/**" />
   </target>
 
-  <target name="dist" depends="compile" >
+  <target name="jar" depends="test" >
     <mkdir dir="${dist}/lib"/>
     <jar jarfile="${dist}/lib/testProject.jar" basedir="${build}"/>
   </target>
