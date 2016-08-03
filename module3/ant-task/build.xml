@@ -24,7 +24,6 @@
   <target name="test" depends="compile" >
     <javac srcdir="${test}" classpathref="libs" destdir="${test}" includeantruntime="false"/>
 	<echo>Performing test</echo>
-	<classpath refid="test.path" />
 	<classpath location="${build}" />
     <junit printsummary="yes" haltonfailure="no">
          <classpath path="${lib}" >
