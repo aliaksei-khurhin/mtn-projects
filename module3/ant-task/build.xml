@@ -21,13 +21,14 @@
 
   <target name="test" depends="compile" >
     <javac srcdir="${test}" classpathref="libs" destdir="${test}" includeantruntime="false"/>
+	<echo>Performing test</echo>
     <junit printsummary="yes" haltonfailure="no">
          <classpath path="${lib}">
                  <path refid="libs" />
          </classpath>
          <batchtest fork="yes" >
                  <fileset dir="${test}">
-                         <include name="Unit*.java"/>
+                         <include name="UnitTest.java"/>
                  </fileset>
          </batchtest>
     </junit>
