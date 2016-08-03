@@ -1,0 +1,35 @@
+<project name="TestProject" default="dist" basedir=".">
+
+  <path id="libs">
+    <fileset dir="lib" includes="*.jar"/>
+  </path>
+
+  <property name="src" location="src"/>
+  <property name="build" location="build"/>
+  <property name="dist"  location="dist"/>
+  <property name="config"  location="config"/>
+  <property name="lib"  location="lib"/>
+  <property name="test"  location="test"/>
+
+  <target name="init">
+    <mkdir dir="${build}"/>
+  </target>
+
+  <target name="compile" depends="init" >
+    <javac srcdir="${src}" classpathref="libs" destdir="${build}" includeantruntime="false"/>
+  </target>
+
+  <target name="test" depends="compile" >
+    <javac srcdir="${test}" classpathref="libs" destdir="${build}" includeantruntime="false"/>
+  </target>
+
+  <target name="dist" depends="compile" >
+    <mkdir dir="${dist}/lib"/>
+    <jar jarfile="${dist}/lib/testProject.jar" basedir="${build}"/>
+  </target>
+
+  <target name="clean">
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+</project>
