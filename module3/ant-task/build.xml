@@ -30,7 +30,7 @@
          <classpath path="${lib}" >
                  <path refid="libs" />
          </classpath>
-         <batchtest fork="yes" todir="${report.dir}>
+         <batchtest fork="yes" todir="${report.dir}">
                  <fileset dir="${test}">
                          <include name="**/*Test*.java"/>
                  </fileset>
