@@ -10,7 +10,6 @@
   <property name="config"  location="config"/>
   <property name="lib"  location="lib"/>
   <property name="test"  location="test"/>
-  <property name="report.dir"  location="reports"/>
 
   <target name="init">
 	<tstamp>
@@ -42,7 +41,7 @@
   <target name="dist" depends="jar" >
 		<tar destfile="${dist}/${time}_${ant.project.name}.tar"
 			basedir="."
-			includes="${config.dir}/*, ${jar.dir}/*, ${lib.dir}/**" />
+			includes="${config}/*, ${dist}/*, ${lib}/**" />
   </target>
 
   <target name="jar" depends="test" >
@@ -53,6 +52,5 @@
   <target name="clean">
     <delete dir="${build}"/>
     <delete dir="${dist}"/>
-	<delete dir="${report.dir}"/>
   </target>
 </project>
