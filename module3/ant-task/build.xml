@@ -13,6 +13,9 @@
   <property name="report.dir"  location="reports"/>
 
   <target name="init">
+	<tstamp>
+		<format property="time" pattern="dd-MM-yyyy_hh:mm"/>
+	</tstamp>
     <mkdir dir="${build}"/>
 	<mkdir dir="${report.dir}"/>
   </target>
@@ -24,6 +27,8 @@
   <target name="test" depends="compile" >
     <javac srcdir="${test}" classpathref="libs" destdir="${test}" includeantruntime="false"/>
 	<echo>Performing test</echo>
+	<classpath refid="test.path" />
+	<classpath location="${build}" />
     <junit printsummary="yes" haltonfailure="no">
          <classpath path="${lib}" >
                  <path refid="libs" />
@@ -34,6 +39,12 @@
                  </fileset>
          </batchtest>
     </junit>
+  </target>
+  
+  <target name="dist" depends="jar" >
+		<tar destfile="${dist}/${time}_${ant.project.name}.tar"
+			basedir="."
+			includes="${config.dir}/*, ${jar.dir}/*, ${lib.dir}/**" />
   </target>
 
   <target name="dist" depends="compile" >
