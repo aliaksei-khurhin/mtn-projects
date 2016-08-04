@@ -19,11 +19,5 @@
 		<include>*</include>
 	</includes>
     </fileSet>
-    <fileSet>
-	<includes>
-		<include>${project.basedir}/src/*.xml</include>
-		<include>${project.basedir}/src/**/*.properties</include>
-	</includes>
-    </fileSet>
   </fileSets>
 </assembly>
