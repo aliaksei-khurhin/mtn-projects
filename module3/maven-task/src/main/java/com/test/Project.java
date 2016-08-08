@@ -4,7 +4,7 @@ package com.test;
 import org.apache.commons.collections.Predicate;
 
 class Project {
-//this is test comment for sonar
+
   public static void test() {
     System.out.println("test");
   }
