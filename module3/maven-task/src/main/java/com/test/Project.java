@@ -1,6 +1,8 @@
 package com.test;
 
 //dependency on Apache commons-collections
+//testcomment 1
+//testcomment 2
 import org.apache.commons.collections.Predicate;
 
 class Project {
